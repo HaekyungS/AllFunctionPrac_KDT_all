@@ -1,0 +1,16 @@
+{
+  "name": "callbackfunc_kdt_230320",
+  "version": "1.0.0",
+  "description": "callback practice",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "callback",
+    "js"
+  ],
+  "author": "haekyung",
+  "license": "ISC"
+}
