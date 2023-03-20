@@ -1,4 +1,4 @@
-import fs, { writeFileSync } from 'fs';
+import fs from 'fs';
 import http from 'http';
 // import createDoc from 'createDoc.js';
 
