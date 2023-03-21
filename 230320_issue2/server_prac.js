@@ -1,10 +1,6 @@
-<<<<<<<< HEAD:230320_issue2/server_prac.js
 import fs, { unlink, writeFileSync } from 'fs';
-========
-import fs from 'fs';
->>>>>>>> origin/HaekyungS/issue2:issue2/server_prac.js
 import http from 'http';
-import DivClickFileDelete from './callback.js';
+import DivClickFileDelete from '../issue2/callback.js';
 // import createDoc from 'createDoc.js';
 console.log(http)
 
@@ -51,14 +47,10 @@ const server = http.createServer(function (request, response) {
       writeFileSync("./" + fileName + ".text", fileInText);
       // 그 이름과 내용으로 파일 생성
       response.writeHead(200, { 'Content-Type': 'text/html' });
-<<<<<<<< HEAD:230320_issue2/server_prac.js
       const page = httphead + `<div onclick=> 파일 삭제 </div>` + `<p> ${fileName} 이름의 파일이 생성되었습니다. </br> 파일 내에는 ${fileInText} 입니다.</p>` + httptail;
       
-========
       // status는 200 이고, type은 text.html.
-      const page = httphead + form + `<p> ${fileName} 이름의 파일이 생성되었습니다. 파일 내에는 ${fileInText} 입니다.</p>` + httptail;
       // PAGE 라는 변수에 html 생긴거 담기.
->>>>>>>> origin/HaekyungS/issue2:issue2/server_prac.js
       // response.write(a)
       response.write(page);
       // 새기기.
