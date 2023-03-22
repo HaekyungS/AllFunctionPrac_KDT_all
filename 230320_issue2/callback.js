@@ -1,7 +1,7 @@
-// import fs from 'fs'
+import fs from 'fs'
 
-function DivClickFileDelete(fileName){
-  fs.unlinkSync('./'+fileName+'.text')
+const DivClickFileDelete = (fileName) => {
+  fs.unlinkSync('./' + fileName + '.text');
 }
 
-export default DivClickFileDelete();
+export default DivClickFileDelete

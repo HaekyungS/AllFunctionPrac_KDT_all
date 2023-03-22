@@ -1,0 +1,15 @@
+{
+  "name": "callbackfunc_kdt_all",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "module_test.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "haekyung",
+  "license": "ISC"
+}
