@@ -1,0 +1,3 @@
+<form method="GET" action="/file"> 
+  <input type="submit" value="파일삭제">
+</form>

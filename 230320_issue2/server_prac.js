@@ -1,6 +1,6 @@
 import fs, { unlink, writeFileSync } from 'fs';
 import http from 'http';
-import DivClickFileDelete from './callback.js';
+// import DivClickFileDelete from './callback.js';
 // import event from 'events';
 // import DivClickFileDelete from '../issue2/callback.js';
 // import createDoc from 'createDoc.js';
@@ -8,7 +8,8 @@ import DivClickFileDelete from './callback.js';
 const httphead = fs.readFileSync('index_01.text');
 const httptail = fs.readFileSync('index_02.text');
 const form = fs.readFileSync('index_03.text');
-// const div = fs.readFileSync('div.text');
+const formDelete = fs.readFileSync('form_delete.text');
+let fileName=""
 
 // const formprop = {
 //   method : 'POST',
@@ -47,7 +48,7 @@ const server = http.createServer(function (request, response) {
     })
     request.on("end", () => {
       // 요청이 끝날 때,
-      let fileName = a.split("=")[1].split("&")[0];
+      fileName = a.split("=")[1].split("&")[0];
       // a변수 데이터 중 두번째 = 뒤면서 첫번째&까지만 filename에 담기
       let fileInText = a.split("=")[2];
       // a변수 데이터 중 세번째 = 뒤
@@ -55,21 +56,11 @@ const server = http.createServer(function (request, response) {
       // 그 이름과 내용으로 파일 생성
       response.writeHead(200, { 'Content-Type': 'text/html' });
 
-      const page = httphead + `<div> 파일삭제 </div> <p> ${fileName} 이름의 파일이 생성되었습니다. </br> 파일 내에는 ${fileInText} 입니다.</p>
-      <script>
-        document.body.children[0].onclick=(${DivClickFileDelete(fileName)});
-      </script>` + httptail;
+      const page = httphead + formDelete + `${fileName} 이름의 파일이 생성되었습니다. </br> 파일 내에는 ${fileInText} 입니다.</p>` + httptail;
       // status는 200 이고, type은 text.html.
       // PAGE 라는 변수에 html 생긴거 담기.
       // response.write(a)
-
-      // 리플로어 리페인트 P672
-
-      // GET요청 Transaction
-      // console.log(request.url) 해보면 링크 왔지만 안읽음
-      // Delete 요청 -> 권장은 안함.
-      // 기존에 있는 걸 다른거로 바꾸고 새로운 걸 칠해준다.
-      // 지운다보다 바꾼다.
+      response.write(page);
 
 
       console.log(page)
@@ -82,17 +73,18 @@ const server = http.createServer(function (request, response) {
       //   fs.unlinkSync('./' + fileName + '.text');
       // })
 
-      response.write(page);
       // 새기기.
-      // 기존데이터를 지워주고 새로새긴다는 절차가 필요함.
-      // BOM API의 "히스토리"를 건드려야함.=> 따로 검증을 해보기.
-      // mount, unmount 
 
       response.end();
       // 반응 끝~
     })
   }
-  if (request.method === "DELETE" && request.url.startsWith === "/file") {
+  if (request.method === "GET" && request.url.startsWith("/file")) {
+    fs.unlinkSync('./' + fileName + '.text');
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    const page = httphead + '<p>' + fileName + ' 이름의 파일이 삭제되었습니다.</p>' + httptail
+    response.write(page);
+    response.end();    
 
   }
 })
