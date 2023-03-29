@@ -1,0 +1,17 @@
+[
+  {
+    "id": "idd",
+    "password": "passs",
+    "email": "e@e.com"
+  },
+  {
+    "id": "test",
+    "password": "root",
+    "email": "b@b.com"
+  },
+  {
+    "id": "fff",
+    "password": "rffr",
+    "email": "f@f.com"
+  }
+]
